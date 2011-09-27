@@ -1,5 +1,5 @@
 /******************************************************************
-*  EasyTransfer Arduino Library v1.7
+*  SoftEasyTransfer Arduino Library v1.7
 *		details and example sketch: 
 *			http://www.billporter.info/easytransfer-arduino-library/
 *
@@ -39,6 +39,21 @@ GNU General Public License for more details.
 *To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or
 *send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 ******************************************************************/
+
+
+
+
+********************To Install*************************************
+
+To install, unzip and place 'SoftEasyTransfer' folder into your 'C:\Users\{user name}\Documents\Arduino\libraries' folder or '{Arduino IDE path}\hardware\libraries" or {Arduino IDE path}\libraries" directory. 
+
+Restart the Arduino IDE, look for the Library under "Sketch" -> "Import Library". You can also try the examples by finding them
+under "File" -> "Examples" -> "SoftEasyTransfer".
+
+All uses of the library are in the example sketchs. 
+
+
+*******************************************************************
 
 
 Library now has two versions, one for regular hardware Serial, one for use with the NewSoftSerial library
