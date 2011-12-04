@@ -31,11 +31,14 @@ GNU General Public License for more details.
 //Not neccessary, but just in case. 
 #if ARDUINO > 22
 #include "Arduino.h"
+#include <SoftwareSerial.h>
 #else
 #include "WProgram.h"
+#include <NewSoftSerial.h>
 #endif
 //#include "HardwareSerial.h"
-#include <NewSoftSerial.h>
+
+
 #include <math.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -44,12 +47,23 @@ GNU General Public License for more details.
 class SoftEasyTransfer {
 public:
 //void begin(uint8_t *, uint8_t, HardwareSerial *theSerial);
+#if ARDUINO > 22
+void begin(uint8_t *, uint8_t, SoftwareSerial *theSerial);
+#else
 void begin(uint8_t *, uint8_t, NewSoftSerial *theSerial);
+#endif
 void sendData();
 boolean receiveData();
 private:
 //HardwareSerial *_serial;
+
+#if ARDUINO > 22
+SoftwareSerial *_serial;
+#else
 NewSoftSerial *_serial;
+#endif
+
+
 uint8_t * address;  //address of struct
 uint8_t size;       //size of struct
 uint8_t rx_len;		//RX packet length according to the packet

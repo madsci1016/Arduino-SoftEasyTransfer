@@ -3,7 +3,15 @@
 
 
 
+#if ARDUINO > 22
+//Captures address and size of struct
+void SoftEasyTransfer::begin(uint8_t * ptr, uint8_t length, SoftwareSerial *theSerial){
+address = ptr;
+size = length;
+_serial = theSerial;
+}
 
+#else
 //Captures address and size of struct
 void SoftEasyTransfer::begin(uint8_t * ptr, uint8_t length, NewSoftSerial *theSerial){
 address = ptr;
@@ -11,17 +19,19 @@ size = length;
 _serial = theSerial;
 }
 
+#endif
+
 //Sends out struct in binary, with header, length info and checksum
 void SoftEasyTransfer::sendData(){
   uint8_t CS = size;
-  _serial->print(0x06, BYTE);
-  _serial->print(0x85, BYTE);
-  _serial->print(size, BYTE);
+  _serial->write(0x06);
+  _serial->write(0x85);
+  _serial->write(size);
   for(int i = 0; i<size; i++){
     CS^=*(address+i);
-    _serial->print(*(address+i), BYTE);
+    _serial->write(*(address+i));
   }
-  _serial->print(CS);
+  _serial->write(CS);
 
 }
 
