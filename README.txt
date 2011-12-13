@@ -1,5 +1,5 @@
 /******************************************************************
-*  SoftEasyTransfer Arduino Library v1.7
+*  SoftEasyTransfer Arduino Library v1.81
 *		details and example sketch: 
 *			http://www.billporter.info/easytransfer-arduino-library/
 *
@@ -19,6 +19,8 @@
 *		    Organized the examples to be Arduino IDE compatible
 *	1.8
 *		Now Arduino 1.0 compatible!
+*   1.81
+*		Made it more cross compatible. Man, They really made us work for this one. 
 *
 *
 *

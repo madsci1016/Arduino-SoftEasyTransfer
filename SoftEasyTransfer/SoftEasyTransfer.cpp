@@ -21,6 +21,7 @@ _serial = theSerial;
 
 #endif
 
+#if ARDUINO > 22
 //Sends out struct in binary, with header, length info and checksum
 void SoftEasyTransfer::sendData(){
   uint8_t CS = size;
@@ -34,6 +35,21 @@ void SoftEasyTransfer::sendData(){
   _serial->write(CS);
 
 }
+#else
+//Sends out struct in binary, with header, length info and checksum
+void SoftEasyTransfer::sendData(){
+  uint8_t CS = size;
+  _serial->print(0x06, BYTE);
+  _serial->print(0x85, BYTE);
+  _serial->print(size, BYTE);
+  for(int i = 0; i<size; i++){
+    CS^=*(address+i);
+    _serial->print(*(address+i), BYTE);
+  }
+  _serial->print(CS, BYTE);
+
+}
+#endif
 
 boolean SoftEasyTransfer::receiveData(){
   
